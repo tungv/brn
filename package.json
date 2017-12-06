@@ -1,0 +1,20 @@
+{
+  "name": "brn",
+  "version": "1.0.1",
+  "description": "simple functional branching logic",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "functional",
+    "branching",
+    "condition",
+    "if-else"
+  ],
+  "author": "Tung Vu <me@tungv.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^21.2.1"
+  }
+}
