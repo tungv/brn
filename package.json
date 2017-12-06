@@ -6,15 +6,14 @@
   "scripts": {
     "test": "jest"
   },
-  "keywords": [
-    "functional",
-    "branching",
-    "condition",
-    "if-else"
-  ],
+  "keywords": ["functional", "branching", "condition", "if-else"],
   "author": "Tung Vu <me@tungv.com>",
   "license": "MIT",
   "devDependencies": {
     "jest": "^21.2.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tungv/brn"
   }
 }
