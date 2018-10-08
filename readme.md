@@ -19,3 +19,14 @@ const fn = branch(isOdd, left, right);
 console.log(fn(2)); // returns 2 is even
 console.log(fn(1)); // returns 1 is odd
 ```
+```
+const branch = require('brn');
+
+const isPowerOf2 = x => x && !(x & (x - 1))
+const left = x => `${x} is power of 2`;
+const right = x => `${x} is not power of 2`;
+const fn = branch(isPowerOf2, left, right);
+
+console.log(fn(2)); // returns 2 is power of 2
+console.log(fn(1)); // returns 1 is not power of 2
+```
