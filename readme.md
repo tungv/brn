@@ -19,3 +19,19 @@ const fn = branch(isOdd, left, right);
 console.log(fn(2)); // returns 2 is even
 console.log(fn(1)); // returns 1 is odd
 ```
+```js
+const branch = require('brn');
+
+const isOdd = x => x % 2;
+const left = function(x) {
+  return `${x} is odd`;
+};
+const right = function(x) {
+  return `${x} is even`;
+};
+
+const fn = branch(isOdd, left, right);
+
+console.log(fn(2)); // returns 2 is even
+console.log(fn(1)); // returns 1 is odd
+```
