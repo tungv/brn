@@ -1,6 +1,7 @@
 type Tuple = any[];
 type Falsy = 0 | 0n | null | false | "" | undefined | void;
-type TestFn<InputArgs extends Tuple, Outcome extends any> = (...args: InputArgs) => Outcome;
+type Truthy = true | object | Function;
+type TestFn<InputArgs extends Tuple, Outcome extends Falsy | Truthy> = (...args: InputArgs) => Outcome;
 type BranchFn<InputArgs extends Tuple, Output> = (...args: InputArgs) => Output;
 
 interface BranchModule {
@@ -9,6 +10,12 @@ interface BranchModule {
     left: BranchFn<InputArgs, LeftOutput>,
     right: BranchFn<InputArgs, RightOutput>
   ): (...args: InputArgs) => RightOutput;
+
+  <InputArgs extends Tuple, LeftOutput = InputArgs[0], RightOutput = InputArgs[0]>(
+    test: TestFn<InputArgs, Truthy>,
+    left: BranchFn<InputArgs, LeftOutput>,
+    right: BranchFn<InputArgs, RightOutput>
+  ): (...args: InputArgs) => LeftOutput;
 
   <InputArgs extends Tuple, LeftOutput = InputArgs[0], RightOutput = InputArgs[0]>(
     test: TestFn<InputArgs, any>,
@@ -20,6 +27,11 @@ interface BranchModule {
     test: TestFn<InputArgs, Falsy>,
     left: BranchFn<InputArgs, LeftOutput>
   ): (...args: InputArgs) => InputArgs[0];
+
+  <InputArgs extends Tuple, LeftOutput = InputArgs[0]>(
+    test: TestFn<InputArgs, Truthy>,
+    left: BranchFn<InputArgs, LeftOutput>
+  ): (...args: InputArgs) => LeftOutput;
 
   <InputArgs extends Tuple, LeftOutput = InputArgs[0]>(
     test: TestFn<InputArgs, any>,
