@@ -56,8 +56,8 @@ it('should return right when test returns null', () => {
 
   expect(fn('1', 2)).toBe(expected);
 
-  expect(test).toBeCalledWith(1, 2);
-  expect(right).toBeCalledWith(1, 2);
+  expect(test).toBeCalledWith('1', 2);
+  expect(right).toBeCalledWith('1', 2);
   expect(left).not.toBeCalled();
 });
 
