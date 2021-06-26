@@ -2,12 +2,20 @@
   "name": "brn",
   "version": "1.0.2",
   "description": "simple functional branching logic",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": [
-    "index.js"
+    "lib/index.js",
+    "lib/index.d.ts"
   ],
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
   },
   "keywords": [
     "functional",
@@ -24,6 +32,7 @@
     "@types/jest": "^26.0.23",
     "babel-jest": "^27.0.5",
     "jest": "^27.0.5",
+    "prettier": "^2.3.2",
     "ts-node": "^10.0.0",
     "typescript": "^4.3.4"
   },
